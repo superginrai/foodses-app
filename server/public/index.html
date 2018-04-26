@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="vendors/angular.min.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
     <title>FOODSES</title>
 </head>
+
 <body ng-app="FoodApp" ng-controller="FoodController as vm">
     <h1>TACOS!!!!!</h1>
-    <div>
-        <input ng-model="vm.snack" type="text">{{vm.snack}}
-    </div>
+    <form class="col-md-12">
+        <div class="form-group col-md-6">
+            <label for="name">Food Name</label>
+            <input type="text" name="name" class="form-control" ng-model="vm.newFood.name" placeholder="Food Name" />
+            <label for="deliciousness">Deliciousness Rating</label>
+            <input type="text" name="is_hot" class="form-control" ng-model="vm.newFood.deliciousness" placeholder="Deliciousness Rating"
+            />
+            <label for="name">Is Hot?</label>
+            <input type="text" name="is_hot" class="form-control" ng-model="vm.newFood.is_hot" placeholder="Is Hot?" />
+            <button ng-click="vm.createFood(vm.snack)">Submit</button>
+            <div>
+                <section class="container">
+                    <h3>FOOOOOODES</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="food in vm.foods">
+                            <!-- What needs to be repeated? -->
+                            <!-- TODO: Create a list item for everyone in the array -->
+                            {{food.name}} {{food.deliciousness}} {{food.is_hot}}
+                        </li>
+                    </ul>
+                </section>
+                <!--  <input ng-model="vm.snack" type="text">{{vm.snack}} -->
+            </div>
 </body>
+
 </html>
