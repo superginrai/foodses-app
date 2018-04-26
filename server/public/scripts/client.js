@@ -8,6 +8,9 @@ app.controller('FoodController', ['$http', function ($http) {
 
     self.snack = 'Hello Tacos!!';
 
+    self.foods = getFoods();
+
+    self.newFood = {};
 
     function getFoods() {
         $http({
@@ -23,18 +26,14 @@ app.controller('FoodController', ['$http', function ($http) {
             });
     }
 
-    self.foods = getFoods();
-
-    self.newFood = {};
-
     self.createFood = function () {
         console.log(self.newFood);
         $http({
             method: 'POST',
             data: self.newFood,
             url: '/food'
-        }).
-            then(function (response) {
+        })
+            .then(function (response) {
                 console.log(response, 'SUCCESS!');
             })
             .catch(function (error) {
@@ -42,4 +41,29 @@ app.controller('FoodController', ['$http', function ($http) {
             });
         getFoods();
     }
+
+    self.saveFood = function (updateFood) {
+        console.log(updateFood);
+        $http({
+            method: 'PUT',
+            data: updateFood,
+            url: '/food'
+        })
+        .then(function (response) {
+            console.log(response, 'UPDATED!');
+        })
+        getFoods();
+    }
+
+
+
+    // self.deleteFood = function() {
+    //     $http({
+    //         method: 'DELETE'
+    //         params: {food.
+    //         }
+    //         })
+
+    // }
+
 }]);

@@ -26,13 +26,24 @@
             <div>
                 <section class="container">
                     <h3>FOOOOOODES</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="food in vm.foods">
-                            <!-- What needs to be repeated? -->
-                            <!-- TODO: Create a list item for everyone in the array -->
-                            {{food.name}} {{food.deliciousness}} {{food.is_hot}}
-                        </li>
-                    </ul>
+                    <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Deliciousness Rating</th>
+                                    <th>Delete</th>
+                                    <th>Save</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id={{food._id}} ng-repeat="food in vm.foods">
+                                    <td><input ng-model="food.name"></td>
+                                    <td><input ng-model="food.deliciousness"></td>
+                                    <td><button ng-click="vm.deleteFood(vm.food._id)">Delete</button></td>
+                                    <td><button ng-click="vm.saveFood(food)">Save</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                 </section>
                 <!--  <input ng-model="vm.snack" type="text">{{vm.snack}} -->
             </div>

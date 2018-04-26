@@ -26,4 +26,13 @@ router.post('/', (req, res) => {
     });
 });
 
+router.put('/', (req, res) => {
+    const foodToUpdate = req.body;
+    console.log('Food to Update:', foodToUpdate);
+    Food.update(foodToUpdate)
+    .then(() => {
+        res.sendStatus(200);
+    });
+});
+
 module.exports = router;
